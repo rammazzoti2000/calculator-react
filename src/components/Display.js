@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Display({ calculation }) {
+function Display(props) {
+  const { calculation } = props;
   return (
     <div>
       { calculation }

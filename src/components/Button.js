@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button({ button }) {
+function Button(props) {
+  const { button } = props;
   return (
     <button type="button">
       { button }
