@@ -10,14 +10,14 @@ const keys = [
 ];
 
 const keyOperators = keys.map(row => (
-  <div key={row.toString()}>
+  <div className="row" key={row.toString()}>
     { row.map(button => <Button button={button} key={button} />) }
   </div>
 ));
 
 function ButtonPannel() {
   return (
-    <div>
+    <div className="ButtonPannel">
       { keyOperators }
     </div>
   );

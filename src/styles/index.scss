@@ -25,5 +25,31 @@ body {
   display: flex;
   flex-direction: column;
   width: 700px;
-  margin: 0 auto;
+  margin: 40px auto 0;
+}
+
+.Display {
+  background-color: grey;
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: right;
+  height: 100px;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  height: 100px;
+}
+
+.Button {
+  width: 25%;
+  font-size: 3.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: 1px solid;
+  &:first-child {
+    border-left: 1px solid;
+  }
 }
