@@ -26,10 +26,10 @@
     <img src="src/readmePics/microverse.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">JavaScript --> [ToDo List]</h3>
+  <h3 align="center">ReactJs --> [Calculator App]</h3>
 
   <p align="center">
-    This project is part of the Microverse curriculum in JavaScript module!
+    This project is part of the Microverse curriculum in React module!
     <br />
     <a href="https://github.com/rammazzoti2000//calculator-react"><strong>Explore the docs »</strong></a>
     <br />
@@ -84,7 +84,7 @@ To have this app on your pc, you need to:
 
   - `$ npm install` - installs all the dependencies required by the project
 
-  - `$ npm start` - runs the app in the development mode: 
+  - `$ npm start` - runs the app in the development mode:
     - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
     - The page will reload if you make edits.
     - You will also see any lint errors in the console.
