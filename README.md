@@ -1,31 +1,3 @@
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm run test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
 *** make this better, please fork the repo and create a pull request or simply open
@@ -108,38 +80,29 @@ To have this app on your pc, you need to:
     https://github.com/rammazzoti2000//calculator-react.git
   ```
 
-In the project directory, you can run:
+* In the project directory, you can run:
 
-- `$ npm install`
+  - `$ npm install` - installs all the dependencies required by the project
 
-Installs all the dependencies required by the project
-
-- `$ npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  - `$ npm start` - runs the app in the development mode: 
+    - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    - The page will reload if you make edits.
+    - You will also see any lint errors in the console.
 
 - `$ npm run test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Launches the test runner in the interactive watch mode.
+  - See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 - `$ npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  - Builds the app for production to the `build` folder.
+  - It correctly bundles React in production mode and optimizes the build for the best performance.
+  - The build is minified and the filenames include the hashes.
+  - Your app is ready to be deployed!
 
 ## Automated Test
  - `$ npm run test`
-
- Launches the test runner in the interactive watch mode.<br />
- See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    - Launches the test runner in the interactive watch mode.<br />
+    - See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## Live Demo & Deployment
 The project has been deployed with [Heroku Buildpack for create-react-app](https://github.com/mars/create-react-app-buildpack#user-content-requires)
