@@ -1,15 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Display extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <div>
-
-      </div>
-    );
-  }
+function Display({ calculation }) {
+  return (
+    <div>
+      { calculation }
+    </div>
+  );
 }
+
+Display.defaultProps = {
+  calculation: '0',
+};
+
+Display.propTypes = {
+  calculation: PropTypes.string,
+};
+
+export default Display;
