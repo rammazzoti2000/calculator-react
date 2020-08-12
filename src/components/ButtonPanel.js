@@ -11,7 +11,14 @@ const keys = [
 
 const keyOperators = keys.map(row => (
   <div className="row" key={row.toString()}>
-    { row.map(button => <Button button={button} key={button} wide={button === '0' ? 1 : 0} color={(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'orange' : 'gray'} />) }
+    { row.map(button => (
+      <Button
+        button={button}
+        key={button}
+        wide={button === '0'}
+        color={(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'orange' : 'gray'}
+      />
+    )) }
   </div>
 ));
 

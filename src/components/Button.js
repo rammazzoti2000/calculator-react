@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Button(props) {
   const { button, wide, color } = props;
-  const buttonClass = `Button ${wide ? 'double-size' : ''} ${color === 'gray' ? 'grayKey' : 'orangeKey'}`;
+  const buttonClass = `Button ${wide ? 'doubleButton' : ''} ${color === 'gray' ? 'grayKey' : 'orangeKey'}`;
 
   return (
     <button type="button" className={buttonClass}>
@@ -19,7 +19,7 @@ Button.defaultProps = {
 Button.propTypes = {
   button: PropTypes.string.isRequired,
   color: PropTypes.string,
-  wide: PropTypes.number.isRequired,
+  wide: PropTypes.bool.isRequired,
 };
 
 export default Button;

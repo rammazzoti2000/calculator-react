@@ -49,11 +49,18 @@ body {
   border-top: none;
   border-left: none;
   border-right: 1px solid;
+  border-bottom: 1px solid;
+  outline: none;
+  cursor: pointer;
   &:first-child {
     border-left: 1px solid;
   }
 }
 
-.double-size {
+.doubleButton {
   width: 50%;
+}
+
+.orangeKey {
+  background-color: orange;
 }
