@@ -9,3 +9,5 @@ function calculate(dataObj, buttonName) {
   //   }
   // }
 }
+
+export default calculate;
