@@ -55,6 +55,9 @@ body {
   &:first-child {
     border-left: 1px solid;
   }
+  &:active {
+    background-color: darkgray;
+  }
 }
 
 .doubleButton {
@@ -63,4 +66,7 @@ body {
 
 .orangeKey {
   background-color: orange;
+  &:active {
+    background-color: darkgoldenrod;
+  }
 }
