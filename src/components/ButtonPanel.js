@@ -10,14 +10,21 @@ const keys = [
 ];
 
 const keyOperators = keys.map(row => (
-  <div key={row.toString()}>
-    { row.map(button => <Button button={button} key={button} />) }
+  <div className="row" key={row.toString()}>
+    { row.map(button => (
+      <Button
+        button={button}
+        key={button}
+        wide={button === '0'}
+        color={(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'orange' : 'gray'}
+      />
+    )) }
   </div>
 ));
 
 function ButtonPannel() {
   return (
-    <div>
+    <div className="ButtonPannel">
       { keyOperators }
     </div>
   );
