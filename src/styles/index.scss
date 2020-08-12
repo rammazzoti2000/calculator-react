@@ -45,15 +45,15 @@ body {
 
 .Button {
   width: 25%;
-  font-size: 3.5rem;
+  font-size: 3rem;
   border-top: none;
   border-left: none;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
+  border-right: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
   outline: none;
   cursor: pointer;
   &:first-child {
-    border-left: 1px solid;
+    border-left: 2px solid lightgray;
   }
   &:active {
     background-color: darkgray;
