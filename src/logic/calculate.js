@@ -12,6 +12,14 @@ function calculate(dataObj, buttonName) {
     }
   }
 
+  if (buttonName === '=') {
+    if (next) {
+      total = operate(total, next, operation);
+      next = null;
+      operation = null;
+    }
+  }
+
   return { total, next, operation };
 }
 
