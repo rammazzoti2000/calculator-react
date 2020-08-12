@@ -29,6 +29,10 @@ body {
 }
 
 .Display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 100px;
   background-color: grey;
   color: white;
   font-weight: bold;
@@ -52,9 +56,11 @@ body {
   border-bottom: 2px solid lightgray;
   outline: none;
   cursor: pointer;
+
   &:first-child {
     border-left: 2px solid lightgray;
   }
+
   &:active {
     background-color: darkgray;
   }
@@ -66,6 +72,7 @@ body {
 
 .orangeKey {
   background-color: orange;
+
   &:active {
     background-color: darkgoldenrod;
   }
