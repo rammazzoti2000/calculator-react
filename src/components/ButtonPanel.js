@@ -16,7 +16,7 @@ const keyOperators = keys.map(row => (
         button={button}
         key={button}
         wide={button === '0'}
-        color={(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'orange' : 'gray'}
+        color={!(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'gray' : ''}
       />
     )) }
   </div>
