@@ -13,11 +13,25 @@ class App extends React.Component {
     };
   }
 
+  handleClick(buttonName) {
+    const result = calculate(this.state, buttonName);
+    const { total } = this.state;
+    if (total === 'No division by 0') {
+      let { newTotal } = this.state;
+      newTotal = null;
+      this.setState({ total: newTotal });
+    } else {
+      this.setState(result);
+    }
+  }
+
   render() {
+    const { total, next } = this.state;
+    const result = next || total;
     return (
       <div className="App">
-        <Display />
-        <ButtonPannel />
+        <Display result={result} />
+        <ButtonPannel onClick={buttonName => this.handleClick(buttonName)} />
       </div>
     );
   }
