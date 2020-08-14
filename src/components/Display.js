@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Display(props) {
-  const { calculation } = props;
+  let { calculation } = props;
+  if (calculation === null || calculation === 'null') { calculation = '0'; }
   return (
     <div className="Display">
       { calculation }
