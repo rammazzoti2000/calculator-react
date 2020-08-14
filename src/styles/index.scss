@@ -47,11 +47,23 @@ body {
   height: 100px;
 }
 
+.orange {
+  button {
+    background-color: orange;
+  }
+
+  &:active {
+    background-color: darkgoldenrod;
+  }
+}
+
 .Button {
   width: 25%;
+
   &:first-child {
     border-left: 2px solid lightgray;
   }
+
   button {
     width: 100%;
     height: 100%;
@@ -62,6 +74,7 @@ body {
     border-bottom: 2px solid lightgray;
     outline: none;
     cursor: pointer;
+
     &:active {
       background-color: darkgray;
     }
@@ -70,14 +83,4 @@ body {
 
 .doubleButton {
   width: 50%;
-}
-
-.orange {
-  button {
-    background-color: orange;
-  }
-
-  &:active {
-    background-color: darkgoldenrod;
-  }
 }
