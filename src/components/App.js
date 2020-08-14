@@ -1,6 +1,6 @@
 import React from 'react';
 import Display from './Display';
-import ButtonPannel from './ButtonPanel';
+import ButtonPanel from './ButtonPanel';
 import calculate from '../logic/calculate';
 
 class App extends React.Component {
@@ -31,7 +31,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Display result={result} />
-        <ButtonPannel onClick={buttonName => this.handleClick(buttonName)} />
+        <ButtonPanel onClick={buttonName => this.handleClick(buttonName)} />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-function ButtonPannel(clickHandler) {
+function ButtonPanel(clickHandler) {
   const keys = [
     ['AC', '+/-', '%', '÷'],
     ['7', '8', '9', 'X'],
@@ -25,10 +25,10 @@ function ButtonPannel(clickHandler) {
   ));
 
   return (
-    <div className="ButtonPannel">
+    <div className="ButtonPanel">
       { keyOperators }
     </div>
   );
 }
 
-export default ButtonPannel;
+export default ButtonPanel;
