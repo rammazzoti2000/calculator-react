@@ -8,30 +8,23 @@ class App extends React.Component {
     super(props);
     this.state = {
       total: null,
-      next: null,
+      next: null, // eslint-disable-next-line
       operation: null,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(buttonName) {
-    const result = calculate(this.state, buttonName);
-    const { total } = this.state;
-    if (total === 'No division by 0') {
-      let { newTotal } = this.state;
-      newTotal = null;
-      this.setState({ total: newTotal });
-    } else {
-      this.setState(result);
-    }
+  handleClick({ buttonName }) {
+    this.setState(state => calculate(state, buttonName));
   }
 
   render() {
     const { total, next } = this.state;
-    const result = next || total;
+    const result = String(total) || String(next);
     return (
       <div className="App">
         <Display result={result} />
-        <ButtonPanel onClick={buttonName => this.handleClick(buttonName)} />
+        <ButtonPanel clickhandler={this.handleClick} />
       </div>
     );
   }
