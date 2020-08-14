@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
-function ButtonPanel(clickHandler) {
+function ButtonPanel(props) {
+  const { clickhandler } = props;
+  const handleClick = buttonName => clickhandler(buttonName);
   const keys = [
     ['AC', '+/-', '%', '÷'],
     ['7', '8', '9', 'X'],
@@ -18,7 +21,7 @@ function ButtonPanel(clickHandler) {
           key={button}
           wide={button === '0'}
           color={(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'orange' : 'gray'}
-          onClick={() => clickHandler.onClick(button)}
+          clickHandler={handleClick}
         />
       )) }
     </div>
@@ -30,5 +33,9 @@ function ButtonPanel(clickHandler) {
     </div>
   );
 }
+
+ButtonPanel.propTypes = {
+  clickhandler: PropTypes.func.isRequired,
+};
 
 export default ButtonPanel;

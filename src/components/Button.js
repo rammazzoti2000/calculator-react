@@ -29,7 +29,7 @@ Button.propTypes = {
   button: PropTypes.string.isRequired,
   color: PropTypes.string,
   wide: PropTypes.bool.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func.isRequired,
 };
 
 export default Button;
