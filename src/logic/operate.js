@@ -1,28 +1,28 @@
-import Big from 'big.js';
+const Big = require('big.js');
 
-function operate(numberOne, numberTwo, operation) {
-  const numOne = Big(numberOne);
-  const numTwo = Big(numberTwo);
+const operate = (numberOne, numberTwo, operation) => {
+  const numOne = new Big(numberOne);
+  const numTwo = new Big(numberTwo);
 
-  let valueArg;
+  switch (operation) {
+    case '-':
+      return numOne.minus(numTwo);
+    case '+':
+      return numOne.plus(numTwo);
+    case 'x':
+      return numOne.times(numTwo);
+    case '÷':
+      if (numberTwo === '0') {
+        return 'Fatal: Division by 0';
+      }
 
-  if (operation === 'X') {
-    valueArg = numOne.times(numTwo);
+      return numOne.div(numTwo);
+    case '%':
+      return numOne.div(100);
+    default:
+      break;
   }
-  if (operation === '-') {
-    valueArg = numOne.minus(numTwo);
-  }
-  if (operation === '+') {
-    valueArg = numOne.plus(numTwo);
-  }
-  if (operation === '÷') {
-    valueArg = numOne.div(numTwo);
-  }
-  if (operation === '%') {
-    valueArg = numOne.mod(numTwo);
-  }
-
-  return valueArg.toString();
-}
+  return -1;
+};
 
 export default operate;

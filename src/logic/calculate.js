@@ -1,87 +1,127 @@
 import operate from './operate';
 
-function calculate(dataObj, buttonName) {
-  let { total, next, operation } = dataObj;
+const isNumber = text => {
+  const nums = new Map();
+  nums.set('0', '0');
+  nums.set('1', '1');
+  nums.set('2', '2');
+  nums.set('3', '3');
+  nums.set('4', '4');
+  nums.set('5', '5');
+  nums.set('6', '6');
+  nums.set('7', '7');
+  nums.set('8', '8');
+  nums.set('9', '9');
+  if (nums.get(text)) {
+    return true;
+  }
+  return false;
+};
 
-  switch (buttonName) {
-    case '%':
-      if (next) {
-        total = operate(total, next, operation);
-        total = operate(total, '100', '÷');
-        next = null;
-        operation = null;
-      } else {
-        total = operate(total, '100', '÷');
-      }
-      break;
+const isOperation = text => {
+  const nums = new Map();
+  nums.set('+', '+');
+  nums.set('-', '-');
+  nums.set('x', 'x');
+  nums.set('÷', '÷');
+  nums.set('%', '%');
+  if (nums.get(text)) {
+    return true;
+  }
+  return false;
+};
 
-    case '+/-':
-      if (next) {
-        next = operate(next, '-1', 'X');
-      } else {
-        total = operate(total, '-1', 'X');
-      }
-      break;
+const isMinusPlus = text => {
+  if (text === '+/-') {
+    return true;
+  }
+  return false;
+};
 
-    case '=':
-      if (next) {
-        total = operate(total, next, operation);
-        next = null;
-        operation = null;
-      }
-      break;
+const isAC = text => {
+  if (text === 'AC') {
+    return true;
+  }
+  return false;
+};
 
-    case 'AC':
-      if (next) {
-        next = '0';
-      } else if (operation) {
-        operation = null;
-      } else {
-        total = '0';
-      }
-      break;
+const isPoint = text => {
+  if (text === '.') {
+    return true;
+  }
+  return false;
+};
 
-    case '.':
-      if (next) {
-        if (!next.includes('.')) {
-          next += '.';
-        }
-      } else if (operation) {
-        next = '0.';
-      } else if (!total.includes('.')) {
-        total += '.';
-      }
-      break;
+const isEqual = text => {
+  if (text === '=') {
+    return true;
+  }
+  return false;
+};
 
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9':
-      if (next) {
-        next += buttonName;
-      } else if (operation) {
-        next = buttonName;
-      } else if (total === '0') {
-        total = buttonName;
-      } else {
-        total += buttonName;
-      }
-
-      break;
-    default:
-      total = operate(total, next, operation);
-      next = null;
+const calculate = (data, buttonName) => {
+  let { total, next, operation } = data;
+  if (isNumber(buttonName)) {
+    if (!total || total === '0' || Number.isNaN(Number(total))) {
+      total = buttonName;
+    } else if (operation !== null) {
+      total += buttonName;
+    } else {
+      total += buttonName;
+    }
+    return {
+      total,
+      next,
+      operation,
+    };
+  }
+  if (isOperation(buttonName)) {
+    if (total) {
+      next = total;
+      total = '0';
       operation = buttonName;
-      break;
+    }
+    return {
+      total,
+      next,
+      operation,
+    };
   }
 
-  return { total, next, operation };
-}
+  if (isMinusPlus(buttonName)) {
+    if (total) {
+      total = (total * -1).toString();
+    }
+    if (next) {
+      next = (total * -1).toString();
+    }
+  }
+
+  if (isAC(buttonName)) {
+    total = '0';
+    next = '0';
+    operation = null;
+  }
+
+  if (isPoint(buttonName)) {
+    if (total && !total.includes('.')) {
+      total += '.';
+    } else if (!total) {
+      total = '0.';
+    }
+  }
+
+  if (isEqual(buttonName)) {
+    total = String(operate(next, total, operation));
+    operation = '';
+    next = '0';
+  }
+
+  return {
+    total,
+    next,
+    operation,
+  };
+};
 
 export default calculate;
