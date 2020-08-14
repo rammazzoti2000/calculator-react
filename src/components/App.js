@@ -1,6 +1,6 @@
 import React from 'react';
 import Display from './Display';
-import ButtonPannel from './ButtonPanel'; // eslint-disable-next-line
+import ButtonPannel from './ButtonPanel';
 import calculate from '../logic/calculate';
 
 class App extends React.Component {
