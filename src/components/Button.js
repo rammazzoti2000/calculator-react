@@ -13,7 +13,7 @@ function Button(props) {
   const className = [
     'Button',
     (name === '÷' || name === 'X' || name === '-' || name === '+' || name === '=') ? color : 'gray',
-    wide ? 'wide' : '',
+    wide ? 'doubleButton' : '',
   ];
 
   return (
