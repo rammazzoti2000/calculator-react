@@ -3,33 +3,33 @@ import PropTypes from 'prop-types';
 
 function Button(props) {
   const {
-    button, wide, color, clickHandler,
+    name, color, wide, clickHandler,
   } = props;
-  const buttonClass = `Button ${wide ? 'doubleButton' : ''} ${color === 'gray' ? 'grayKey' : 'orangeKey'}`;
-  const handleClick = name => clickHandler(name);
+
+  const handleClick = () => {
+    clickHandler(name);
+  };
+
+  const className = [
+    'Button',
+    (name === '÷' || name === 'X' || name === '-' || name === '+' || name === '=') ? color : 'gray',
+    wide ? 'wide' : '',
+  ];
 
   return (
-    <button
-      type="button"
-      className={buttonClass}
-      onClick={() => {
-        handleClick({ button });
-      }}
-    >
-      { button }
-    </button>
+    <div className={className.join(' ').trim()}>
+      <button type="button" onClick={handleClick}>{name}</button>
+    </div>
   );
 }
 
-Button.defaultProps = {
-  color: 'orange',
-};
-
 Button.propTypes = {
-  button: PropTypes.string.isRequired,
-  color: PropTypes.string,
+  name: PropTypes.string.isRequired,
   wide: PropTypes.bool.isRequired,
+  color: PropTypes.string,
   clickHandler: PropTypes.func.isRequired,
 };
+
+Button.defaultProps = { color: 'orange' };
 
 export default Button;

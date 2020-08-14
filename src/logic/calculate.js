@@ -1,127 +1,110 @@
+import Big from 'big.js';
+
 import operate from './operate';
 
-const isNumber = text => {
-  const nums = new Map();
-  nums.set('0', '0');
-  nums.set('1', '1');
-  nums.set('2', '2');
-  nums.set('3', '3');
-  nums.set('4', '4');
-  nums.set('5', '5');
-  nums.set('6', '6');
-  nums.set('7', '7');
-  nums.set('8', '8');
-  nums.set('9', '9');
-  if (nums.get(text)) {
-    return true;
+export default function calculate(obj, buttonName) {
+  function isNumber(item) {
+    return /[0-9]+/.test(item);
   }
-  return false;
-};
 
-const isOperation = text => {
-  const nums = new Map();
-  nums.set('+', '+');
-  nums.set('-', '-');
-  nums.set('x', 'x');
-  nums.set('÷', '÷');
-  nums.set('%', '%');
-  if (nums.get(text)) {
-    return true;
+  if (buttonName === 'AC') {
+    return {
+      total: null,
+      next: null,
+      operation: null,
+    };
   }
-  return false;
-};
 
-const isMinusPlus = text => {
-  if (text === '+/-') {
-    return true;
-  }
-  return false;
-};
-
-const isAC = text => {
-  if (text === 'AC') {
-    return true;
-  }
-  return false;
-};
-
-const isPoint = text => {
-  if (text === '.') {
-    return true;
-  }
-  return false;
-};
-
-const isEqual = text => {
-  if (text === '=') {
-    return true;
-  }
-  return false;
-};
-
-const calculate = (data, buttonName) => {
-  let { total, next, operation } = data;
   if (isNumber(buttonName)) {
-    if (!total || total === '0' || Number.isNaN(Number(total))) {
-      total = buttonName;
-    } else if (operation !== null) {
-      total += buttonName;
-    } else {
-      total += buttonName;
+    if (buttonName === '0' && obj.next === '0') {
+      return {};
+    }
+    if (obj.operation) {
+      if (obj.next) {
+        return { next: obj.next + buttonName };
+      }
+      return { next: buttonName };
+    }
+    if (obj.next) {
+      const next = obj.next === '0' ? buttonName : obj.next + buttonName;
+      return {
+        next,
+        total: null,
+      };
     }
     return {
-      total,
-      next,
-      operation,
-    };
-  }
-  if (isOperation(buttonName)) {
-    if (total) {
-      next = total;
-      total = '0';
-      operation = buttonName;
-    }
-    return {
-      total,
-      next,
-      operation,
+      next: buttonName,
+      total: null,
     };
   }
 
-  if (isMinusPlus(buttonName)) {
-    if (total) {
-      total = (total * -1).toString();
+  if (buttonName === '%') {
+    if (obj.operation && obj.next) {
+      const result = operate(obj.total, obj.next, obj.operation);
+      return {
+        total: Big(result)
+          .div(Big('100'))
+          .toString(),
+        next: null,
+        operation: null,
+      };
     }
-    if (next) {
-      next = (total * -1).toString();
+    if (obj.next) {
+      return {
+        next: Big(obj.next)
+          .div(Big('100'))
+          .toString(),
+      };
     }
+    return {};
   }
 
-  if (isAC(buttonName)) {
-    total = '0';
-    next = '0';
-    operation = null;
-  }
-
-  if (isPoint(buttonName)) {
-    if (total && !total.includes('.')) {
-      total += '.';
-    } else if (!total) {
-      total = '0.';
+  if (buttonName === '.') {
+    if (obj.next) {
+      if (obj.next.includes('.')) {
+        return {};
+      }
+      return { next: `${obj.next}.` };
     }
+    return { next: '0.' };
   }
 
-  if (isEqual(buttonName)) {
-    total = String(operate(next, total, operation));
-    operation = '';
-    next = '0';
+  if (buttonName === '=') {
+    if (obj.next && obj.operation) {
+      return {
+        total: operate(obj.total, obj.next, obj.operation),
+        next: null,
+        operation: null,
+      };
+    }
+    return {};
+  }
+
+  if (buttonName === '+/-') {
+    if (obj.next) {
+      return { next: (-1 * parseFloat(obj.next)).toString() };
+    }
+    if (obj.total) {
+      return { total: (-1 * parseFloat(obj.total)).toString() };
+    }
+    return {};
+  }
+
+  if (obj.operation) {
+    return {
+      total: operate(obj.total, obj.next, obj.operation),
+      next: null,
+      operation: buttonName,
+    };
+  }
+
+  if (!obj.next) {
+    return { operation: buttonName };
   }
 
   return {
-    total,
-    next,
-    operation,
+    total: obj.next,
+    next: null,
+    operation: buttonName,
   };
-};
-
-export default calculate;
+}

@@ -1,28 +1,25 @@
-const Big = require('big.js');
+import Big from 'big.js';
 
-const operate = (numberOne, numberTwo, operation) => {
-  const numOne = new Big(numberOne);
-  const numTwo = new Big(numberTwo);
+/* eslint-disable eqeqeq, no-else-return */
 
-  switch (operation) {
-    case '-':
-      return numOne.minus(numTwo);
-    case '+':
-      return numOne.plus(numTwo);
-    case 'x':
-      return numOne.times(numTwo);
-    case '÷':
-      if (numberTwo === '0') {
-        return 'Fatal: Division by 0';
-      }
-
-      return numOne.div(numTwo);
-    case '%':
-      return numOne.div(100);
-    default:
-      break;
+export default function operate(numberOne, numberTwo, operation) {
+  const one = Big(numberOne || '0');
+  const two = Big(numberTwo || '0');
+  if (operation === '+') {
+    return one.plus(two).toString();
   }
-  return -1;
-};
-
-export default operate;
+  if (operation === '-') {
+    return one.minus(two).toString();
+  }
+  if (operation === 'x') {
+    return one.times(two).toString();
+  }
+  if (operation === '÷') {
+    if (two == '0') {
+      return 'Divide by 0 error';
+    } else {
+      return one.div(two).toString();
+    }
+  }
+  throw Error(`Unknown operation '${operation}'`);
+}
