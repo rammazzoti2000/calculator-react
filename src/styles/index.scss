@@ -49,20 +49,22 @@ body {
 
 .Button {
   width: 25%;
-  font-size: 3rem;
-  border-top: none;
-  border-left: none;
-  border-right: 2px solid lightgray;
-  border-bottom: 2px solid lightgray;
-  outline: none;
-  cursor: pointer;
-
   &:first-child {
     border-left: 2px solid lightgray;
   }
-
-  &:active {
-    background-color: darkgray;
+  button {
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    outline: none;
+    cursor: pointer;
+    &:active {
+      background-color: darkgray;
+    }
   }
 }
 
@@ -70,8 +72,10 @@ body {
   width: 50%;
 }
 
-.orangeKey {
-  background-color: orange;
+.orange {
+  button {
+    background-color: orange;
+  }
 
   &:active {
     background-color: darkgoldenrod;
