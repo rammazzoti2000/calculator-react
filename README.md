@@ -53,7 +53,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-  > to be added
+  This is a simple calculator app built with React, its behavior is the same of a conventional calculator, but in the browser.
+  ![screenshot](readmePics/screenshot.png)
 
 ### Built With
 This project was built using these technologies.
@@ -84,7 +85,7 @@ To have this app on your pc, you need to:
 
   - `$ npm install` - installs all the dependencies required by the project
 
-  - `$ npm start` - runs the app in the development mode: 
+  - `$ npm start` - runs the app in the development mode:
     - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
     - The page will reload if you make edits.
     - You will also see any lint errors in the console.
