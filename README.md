@@ -53,8 +53,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-  This is a simple calculator app built with React, its behavior is the same of a conventional calculator, but in the browser.
-  ![screenshot](readmePics/screenshot.png)
+  This is a simple calculator app built with React, its behavior is the same of a conventional calculator, except that is working in the browser.
+  ![screenshot](src/readmePics/screenshot.png)
 
 ### Built With
 This project was built using these technologies.
