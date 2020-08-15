@@ -9,37 +9,31 @@ function ButtonPanel(props) {
     clickHandler(buttonName);
   };
 
+  const keys = [
+    ['AC', '+/-', '%', '÷'],
+    ['7', '8', '9', 'x'],
+    ['4', '5', '6', '-'],
+    ['1', '2', '3', '+'],
+    ['0', '.', '='],
+  ];
+
+  const keyButtons = keys.map(row => (
+    <div key={row.toString()} className="row">
+      { row.map(button => (
+        <Button
+          key={button}
+          name={button}
+          value={button}
+          wide={button === '0'}
+          clickHandler={handleClick}
+        />
+      ))}
+    </div>
+  ));
+
   return (
     <div className="ButtonPannel">
-      <div className="row">
-        <Button name="AC" clickHandler={handleClick} />
-        <Button name="+/-" clickHandler={handleClick} />
-        <Button name="%" clickHandler={handleClick} />
-        <Button name="÷" clickHandler={handleClick} orange />
-      </div>
-      <div className="row">
-        <Button name="7" clickHandler={handleClick} />
-        <Button name="8" clickHandler={handleClick} />
-        <Button name="9" clickHandler={handleClick} />
-        <Button name="x" clickHandler={handleClick} orange />
-      </div>
-      <div className="row">
-        <Button name="4" clickHandler={handleClick} />
-        <Button name="5" clickHandler={handleClick} />
-        <Button name="6" clickHandler={handleClick} />
-        <Button name="-" clickHandler={handleClick} orange />
-      </div>
-      <div className="row">
-        <Button name="1" clickHandler={handleClick} />
-        <Button name="2" clickHandler={handleClick} />
-        <Button name="3" clickHandler={handleClick} />
-        <Button name="+" clickHandler={handleClick} orange />
-      </div>
-      <div className="row">
-        <Button name="0" clickHandler={handleClick} wide />
-        <Button name="." clickHandler={handleClick} />
-        <Button name="=" clickHandler={handleClick} orange />
-      </div>
+      {keyButtons}
     </div>
   );
 }
