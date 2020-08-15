@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: 40px auto 0;
+}
+
+.Display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 100px;
+  background-color: grey;
+  color: white;
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: right;
+  height: 100px;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  height: 100px;
+}
+
+.orange {
+  button {
+    background-color: orange;
+  }
+
+  &:active {
+    background-color: darkgoldenrod;
+  }
+}
+
+.Button {
+  width: 25%;
+
+  &:first-child {
+    border-left: 2px solid lightgray;
+  }
+
+  button {
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    border-top: none;
+    border-left: none;
+    border-right: 2px solid lightgray;
+    border-bottom: 2px solid lightgray;
+    outline: none;
+    cursor: pointer;
+
+    &:active {
+      background-color: darkgray;
+    }
+  }
+}
+
+.doubleButton {
+  width: 50%;
+}

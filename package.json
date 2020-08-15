@@ -6,9 +6,12 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "big.js": "^5.2.2",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,5 +33,35 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "stylelint": "^13.6.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.8.0",
+    "stylelint-scss": "^3.18.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rammazzoti2000/calculator-react.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "microverse",
+    "odin"
+  ],
+  "author": "Alexandru Bangau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rammazzoti2000/calculator-react/issues"
+  },
+  "homepage": "https://calculator-reactjsx.herokuapp.com/"
 }
