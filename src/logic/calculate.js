@@ -1,87 +1,110 @@
+import Big from 'big.js';
+
 import operate from './operate';
 
-function calculate(dataObj, buttonName) {
-  let { total, next, operation } = dataObj;
-
-  switch (buttonName) {
-    case '%':
-      if (next) {
-        total = operate(total, next, operation);
-        total = operate(total, '100', '÷');
-        next = null;
-        operation = null;
-      } else {
-        total = operate(total, '100', '÷');
-      }
-      break;
-
-    case '+/-':
-      if (next) {
-        next = operate(next, '-1', 'X');
-      } else {
-        total = operate(total, '-1', 'X');
-      }
-      break;
-
-    case '=':
-      if (next) {
-        total = operate(total, next, operation);
-        next = null;
-        operation = null;
-      }
-      break;
-
-    case 'AC':
-      if (next) {
-        next = '0';
-      } else if (operation) {
-        operation = null;
-      } else {
-        total = '0';
-      }
-      break;
-
-    case '.':
-      if (next) {
-        if (!next.includes('.')) {
-          next += '.';
-        }
-      } else if (operation) {
-        next = '0.';
-      } else if (!total.includes('.')) {
-        total += '.';
-      }
-      break;
-
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9':
-      if (next) {
-        next += buttonName;
-      } else if (operation) {
-        next = buttonName;
-      } else if (total === '0') {
-        total = buttonName;
-      } else {
-        total += buttonName;
-      }
-
-      break;
-    default:
-      total = operate(total, next, operation);
-      next = null;
-      operation = buttonName;
-      break;
+export default function calculate(obj, buttonName) {
+  function isNumber(item) {
+    return /[0-9]+/.test(item);
   }
 
-  return { total, next, operation };
-}
+  if (buttonName === 'AC') {
+    return {
+      total: null,
+      next: null,
+      operation: null,
+    };
+  }
 
-export default calculate;
+  if (isNumber(buttonName)) {
+    if (buttonName === '0' && obj.next === '0') {
+      return {};
+    }
+    if (obj.operation) {
+      if (obj.next) {
+        return { next: obj.next + buttonName };
+      }
+      return { next: buttonName };
+    }
+    if (obj.next) {
+      const next = obj.next === '0' ? buttonName : obj.next + buttonName;
+      return {
+        next,
+        total: null,
+      };
+    }
+    return {
+      next: buttonName,
+      total: null,
+    };
+  }
+
+  if (buttonName === '%') {
+    if (obj.operation && obj.next) {
+      const result = operate(obj.total, obj.next, obj.operation);
+      return {
+        total: Big(result)
+          .div(Big('100'))
+          .toString(),
+        next: null,
+        operation: null,
+      };
+    }
+    if (obj.next) {
+      return {
+        next: Big(obj.next)
+          .div(Big('100'))
+          .toString(),
+      };
+    }
+    return {};
+  }
+
+  if (buttonName === '.') {
+    if (obj.next) {
+      if (obj.next.includes('.')) {
+        return {};
+      }
+      return { next: `${obj.next}.` };
+    }
+    return { next: '0.' };
+  }
+
+  if (buttonName === '=') {
+    if (obj.next && obj.operation) {
+      return {
+        total: operate(obj.total, obj.next, obj.operation),
+        next: null,
+        operation: null,
+      };
+    }
+    return {};
+  }
+
+  if (buttonName === '+/-') {
+    if (obj.next) {
+      return { next: (-1 * parseFloat(obj.next)).toString() };
+    }
+    if (obj.total) {
+      return { total: (-1 * parseFloat(obj.total)).toString() };
+    }
+    return {};
+  }
+
+  if (obj.operation) {
+    return {
+      total: operate(obj.total, obj.next, obj.operation),
+      next: null,
+      operation: buttonName,
+    };
+  }
+
+  if (!obj.next) {
+    return { operation: buttonName };
+  }
+
+  return {
+    total: obj.next,
+    next: null,
+    operation: buttonName,
+  };
+}

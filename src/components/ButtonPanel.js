@@ -1,33 +1,51 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
-const keys = [
-  ['AC', '+/-', '%', '÷'],
-  ['7', '8', '9', 'X'],
-  ['4', '5', '6', '-'],
-  ['1', '2', '3', '+'],
-  ['0', '.', '='],
-];
+function ButtonPanel(props) {
+  const { clickHandler } = props;
 
-const keyOperators = keys.map(row => (
-  <div className="row" key={row.toString()}>
-    { row.map(button => (
-      <Button
-        button={button}
-        key={button}
-        wide={button === '0'}
-        color={(button === '÷' || button === 'X' || button === '-' || button === '+' || button === '=') ? 'orange' : 'gray'}
-      />
-    )) }
-  </div>
-));
+  const handleClick = buttonName => {
+    clickHandler(buttonName);
+  };
 
-function ButtonPannel() {
   return (
     <div className="ButtonPannel">
-      { keyOperators }
+      <div className="row">
+        <Button name="AC" clickHandler={handleClick} />
+        <Button name="+/-" clickHandler={handleClick} />
+        <Button name="%" clickHandler={handleClick} />
+        <Button name="÷" clickHandler={handleClick} orange />
+      </div>
+      <div className="row">
+        <Button name="7" clickHandler={handleClick} />
+        <Button name="8" clickHandler={handleClick} />
+        <Button name="9" clickHandler={handleClick} />
+        <Button name="x" clickHandler={handleClick} orange />
+      </div>
+      <div className="row">
+        <Button name="4" clickHandler={handleClick} />
+        <Button name="5" clickHandler={handleClick} />
+        <Button name="6" clickHandler={handleClick} />
+        <Button name="-" clickHandler={handleClick} orange />
+      </div>
+      <div className="row">
+        <Button name="1" clickHandler={handleClick} />
+        <Button name="2" clickHandler={handleClick} />
+        <Button name="3" clickHandler={handleClick} />
+        <Button name="+" clickHandler={handleClick} orange />
+      </div>
+      <div className="row">
+        <Button name="0" clickHandler={handleClick} wide />
+        <Button name="." clickHandler={handleClick} />
+        <Button name="=" clickHandler={handleClick} orange />
+      </div>
     </div>
   );
 }
 
-export default ButtonPannel;
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
+};
+
+export default ButtonPanel;

@@ -53,7 +53,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-  > to be added
+  This is a simple calculator app built with React, its behavior is the same of a conventional calculator, except that is working in the browser.
+  ![screenshot](src/readmePics/screenshot.png)
 
 ### Built With
 This project was built using these technologies.
@@ -89,10 +90,6 @@ To have this app on your pc, you need to:
     - The page will reload if you make edits.
     - You will also see any lint errors in the console.
 
-  - `$ npm run test`
-    - Launches the test runner in the interactive watch mode.
-    - See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
   - `$ npm run build`
     - Builds the app for production to the `build` folder.
     - It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -100,10 +97,8 @@ To have this app on your pc, you need to:
     - Your app is ready to be deployed!
 
 ## Automated Test
- - `$ npm run test`
-    - Launches the test runner in the interactive watch mode.<br />
-    - See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+ > to be added
+ 
 ## Live Demo & Deployment
 The project has been deployed with [Heroku Buildpack for create-react-app](https://github.com/mars/create-react-app-buildpack#user-content-requires)
 
